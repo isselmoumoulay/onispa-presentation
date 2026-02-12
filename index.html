@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Présentation ONISPA - Site Web Officiel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .hero-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease 0.3s both;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.5s both;
+        }
+
+        .hero-description {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.85;
+            animation: fadeInUp 1s ease 0.7s both;
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            animation: fadeInUp 1s ease 0.9s both;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .stat-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #FFD700;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        /* Sections Grid */
+        .sections-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin: 4rem 0 2rem;
+            animation: fadeIn 1s ease;
+        }
+
+        .sections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .section-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            animation: fadeInScale 0.6s ease both;
+        }
+
+        .section-card:nth-child(1) { animation-delay: 0.1s; }
+        .section-card:nth-child(2) { animation-delay: 0.2s; }
+        .section-card:nth-child(3) { animation-delay: 0.3s; }
+        .section-card:nth-child(4) { animation-delay: 0.4s; }
+        .section-card:nth-child(5) { animation-delay: 0.5s; }
+        .section-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .section-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .section-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #007A33, #00A344);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .section-content {
+            padding: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #FFD700;
+        }
+
+        .section-description {
+            line-height: 1.6;
+            opacity: 0.85;
+            margin-bottom: 1rem;
+        }
+
+        .section-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: 600;
+            transition: gap 0.3s ease;
+        }
+
+        .section-link:hover {
+            gap: 1rem;
+        }
+
+        /* Features */
+        .features {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 4rem 0;
+        }
+
+        .features-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #FFD700;
+        }
+
+        .feature-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-description {
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(0, 122, 51, 0.3), rgba(0, 163, 68, 0.3));
+            border-radius: 20px;
+            margin: 4rem 0;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+        }
+
+        .cta-description {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #1e3a5f;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #1e3a5f;
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        .presentation-footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 4rem;
+        }
+
+        .footer-logo {
+            width: 80px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-text {
+            opacity: 0.7;
+            margin-bottom: 1rem;
+        }
+
+        .footer-certifications {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .cert-badge {
+            background: rgba(255, 215, 0, 0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            color: #FFD700;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .sections-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <img src="https://www.genspark.ai/api/files/s/VDfgQPp5" alt="Logo ONISPA" class="hero-logo">
+            <h1 class="hero-title">ONISPA</h1>
+            <p class="hero-subtitle">Office National d'Inspection Sanitaire des Produits de la Pêche et de l'Aquaculture</p>
+            <p class="hero-description">
+                Découvrez le site web officiel de l'ONISPA - Un portail moderne et complet dédié à 
+                l'inspection sanitaire, la qualité et la sécurité des produits de la pêche maritime en Mauritanie.
+            </p>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-file-code"></i></div>
+                <div class="stat-number">17</div>
+                <div class="stat-label">Pages FR</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-language"></i></div>
+                <div class="stat-number">2</div>
+                <div class="stat-label">Langues (FR/AR)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-building"></i></div>
+                <div class="stat-number">6</div>
+                <div class="stat-label">Départements</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-mobile-alt"></i></div>
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Responsive</div>
+            </div>
+        </div>
+
+        <!-- Main Sections -->
+        <h2 class="sections-title">Découvrez Toutes les Sections du Site</h2>
+        <div class="sections-grid">
+            
+            <!-- Accueil -->
+            <div class="section-card" onclick="window.open('index.html', '_blank')">
+                <div class="section-image">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="section-content">
+                    <h3 class="section-title">Page d'Accueil</h3>
+                    <p class="section-description">
+                        Hero élégant avec slider, présentation du directeur, missions principales, 
+                        départements, services et statistiques clés.
+                    </p>
+                    <a href="index.html" target="_blank" class="section-link">
+                        Visiter <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mot du Directeur -->
+            <div class="section-card" onclick="window.open('mot-directeur.html', '_blank')">
+                <div class="section-image" style="background: linear-gradient(135deg, #2c5282, #1e3a5f);">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <div class="section-content">
+                    <h3 class="section-title">Mot du Directeur</h3>
+                    <p class="section-description">
+                        Message de bienvenue, vision stratégique, historique de l'ONISPA et 
+                        engagement envers l'excellence.
+                    </p>
+                    <a href="mot-directeur.html" target="_blank" class="section-link">
+                        Découvrir <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Missions -->
+            <div class="section-card" onclick="window.open('missions.html', '_blank')">
+                <div class="section-image" style="background: linear-gradient(135deg, #007A33, #005722);">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <div class="section-content">
+                    <h3 class="section-title">Nos Missions</h3>
+                    <p class="section-description">
+                        4 missions détaillées : Inspection sanitaire, Analyses de laboratoire, 
+                        Surveillance du milieu aquatique, et Certifications.
+                    </p>
+                    <a href="missions.html" target="_blank" class="section-link">
+                        Explorer <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Organigramme -->
+            <div class="section-card" onclick="window.open('organigramme.html', '_blank')">
+                <div class="section-image" style="background: linear-gradient(135deg, #FFD700, #FFA500);">
+                    <i class="fas fa-sitemap"></i>
+                </div>
+                <div class="section-content">
+                    <h3 class="section-title">Organigramme</h3>
+                    <p class="section-description">
+                        Structure organisationnelle complète avec Direction Générale, 
+                        3 départements, 2 services et antenne de Nouakchott.
+                    </p>
+                    <a href="organigramme.html" target="_blank" class="section-link">
+                        Voir <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Départements -->
+            <div class="section-card" onclick="window.open('dis.html', '_blank')">
+                <div class="section-image" style="background: linear-gradient(135deg, #e74c3c, #c0392b);">
+                    <i class="fas fa-building"></i>
+                </div>
+                <div class="section-content">
+                    <h3 class="section-title">Départements</h3>
+                    <p class="section-description">
+                        DIS, DCM-SMA, DAMG, Antenne Nouakchott, Service Qualité, Service Comptabilité - 
+                        chacun avec missions complètes.
+                    </p>
+                    <a href="dis.html" target="_blank" class="section-link">
+                        Parcourir <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Contact -->
+            <div class="section-card" onclick="window.open('contact.html', '_blank')">
+                <div class="section-image" style="background: linear-gradient(135deg, #3498db, #2980b9);">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="section-content">
+                    <h3 class="section-title">Contact</h3>
+                    <p class="section-description">
+                        Formulaire de contact, carte interactive Google Maps, 
+                        coordonnées complètes et FAQ.
+                    </p>
+                    <a href="contact.html" target="_blank" class="section-link">
+                        Contacter <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Features -->
+        <div class="features">
+            <h2 class="features-title">Fonctionnalités Techniques</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <div class="feature-title">Design Responsive</div>
+                    <div class="feature-description">Adapté à tous les écrans : mobile, tablette, desktop</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-language"></i></div>
+                    <div class="feature-title">Bilingue FR/AR</div>
+                    <div class="feature-description">17 pages en français + 17 pages en arabe</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-rocket"></i></div>
+                    <div class="feature-title">Animations Fluides</div>
+                    <div class="feature-description">Transitions smooth et effets au scroll</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-certificate"></i></div>
+                    <div class="feature-title">Certifications ISO</div>
+                    <div class="feature-description">ISO 17020 et ISO 17025 mis en avant</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <div class="feature-title">Performance</div>
+                    <div class="feature-description">Chargement rapide et optimisé</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-universal-access"></i></div>
+                    <div class="feature-title">Accessible</div>
+                    <div class="feature-description">ARIA labels et navigation au clavier</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <h2 class="cta-title">Prêt à Explorer le Site ONISPA ?</h2>
+            <p class="cta-description">
+                Découvrez toutes les pages, fonctionnalités et contenus du site officiel
+            </p>
+            <div class="cta-buttons">
+                <a href="index.html" target="_blank" class="btn btn-primary">
+                    <i class="fas fa-home"></i> Visiter le Site
+                </a>
+                <a href="ar/index.html" target="_blank" class="btn btn-secondary">
+                    <i class="fas fa-language"></i> Version Arabe
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="presentation-footer">
+            <img src="https://www.genspark.ai/api/files/s/VDfgQPp5" alt="Logo ONISPA" class="footer-logo">
+            <p class="footer-text">
+                <strong>ONISPA</strong> - Office National d'Inspection Sanitaire<br>
+                des Produits de la Pêche et de l'Aquaculture
+            </p>
+            <p class="footer-text">
+                📍 Nouadhibou, Mauritanie<br>
+                📞 +222 45 25 25 25<br>
+                ✉️ contact@onispa.mr
+            </p>
+            <div class="footer-certifications">
+                <span class="cert-badge"><i class="fas fa-certificate"></i> ISO 17020</span>
+                <span class="cert-badge"><i class="fas fa-certificate"></i> ISO 17025</span>
+            </div>
+            <p class="footer-text" style="margin-top: 2rem; opacity: 0.5;">
+                © 2025 ONISPA - Tous droits réservés
+            </p>
+        </div>
+    </div>
+</body>
+</html>
